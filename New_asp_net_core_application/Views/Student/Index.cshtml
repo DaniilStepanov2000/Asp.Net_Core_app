@@ -1,0 +1,39 @@
+﻿@model ICollection<New_asp_net_core_application.Storage.Entity.Student>
+
+<h1>I did it to myself!</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>LastName</th>
+        <th>Group</th>
+    </tr>
+    @foreach(var student in Model)
+     {
+        <tr>
+            <td>@student.Id</td>
+            <td>@student.Name</td>
+            <td>@student.LastName</td>
+            <td>@student.Group.Name</td>
+        </tr>       
+     }
+</table>
+
+<h1>Delete some stuff</h1>
+<div>
+    @using (Html.BeginForm("DeleteStudent", "Student", FormMethod.Post))
+    {
+        <input type="text" name="studentid" id="studentid"/>
+        <button type="submit">Delete student</button>
+    }
+</div>
+<h1>Adding some stuff</h1>
+<div>
+    @using (Html.BeginForm("AddStudent", "Student", FormMethod.Post))
+    {
+        <input type="text" name="name" id="name" />
+        <input type="text" name="lastName" id="lastName" />
+        <input type="text" name="groupId" id="groupId" />
+        <button type="submit">Add student</button>
+    }
+</div>
